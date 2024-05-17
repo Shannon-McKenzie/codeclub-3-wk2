@@ -10,22 +10,18 @@
 
 var src_default = {
 	async fetch(request, env, ctx) {
-	  if(request.url == "https://www.cloudflareworkers.com/test") {
-			 return new Response('Hello worker!', {
-				 headers: {
-					 'content-type': 'text/plain',
-				 },
-			 });
-		 }
-		 else{
-			 return new Response('Error Worker! Wrong URL', {
-				 headers: {
-					 'content-type': 'text/plain',
-				 },
-			 });
-		 }
-	}
-  };
-  export {
-	src_default as default
-  };
+		const SMresponses = {
+			1: "Shannon McKenzie's random response 1",
+			2: "Shannon McKenzie's random response 2",
+			3: "Shannon McKenzie's random response 3",
+			4: "Shannon McKenzie's random response 4"
+		}
+
+		const max = 4;
+		const responseInteger = Math.ceil(Math.random() * max)
+
+		let randomResponse = SMresponses[responseInteger]
+
+		return new Response(randomResponse, { status: 200 })
+	},
+};
